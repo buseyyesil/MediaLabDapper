@@ -1,0 +1,172 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header flex-wrap">
+    <h3 class="mb-0">MediLab Yönetim Paneli</h3>
+</div>
+
+<div class="row mt-3">
+    <div class="col-xl-3 col-md-6 grid-margin stretch-card">
+        <div class="card bg-primary">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Toplam Randevu</p>
+                        <h2 class="text-white">@ViewBag.TotalAppointments</h2>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-calendar bg-inverse-icon-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 grid-margin stretch-card">
+        <div class="card bg-success">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Toplam Doktor</p>
+                        <h2 class="text-white">@ViewBag.TotalDoctors</h2>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 grid-margin stretch-card">
+        <div class="card bg-warning">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Toplam Bölüm</p>
+                        <h2 class="text-white">@ViewBag.TotalDepartments</h2>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-hospital bg-inverse-icon-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6 grid-margin stretch-card">
+        <div class="card bg-danger">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Bekleyen Randevu</p>
+                        <h2 class="text-white">@ViewBag.PendingAppointments</h2>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-clock bg-inverse-icon-danger"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Randevu Durum Dağılımı</h4>
+                <div style="position:relative; height:250px;">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Genel İstatistikler</h4>
+                <div style="position:relative; height:250px;">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Son Randevular</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>Telefon</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.LastAppointments != null)
+                            {
+                                foreach (var item in ViewBag.LastAppointments)
+                                {
+                                    <tr>
+                                        <td>@item.FullName</td>
+                                        <td>@item.Phone</td>
+                                        <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            @if ((int)item.IsApproved == 0)
+                                            {
+                                                <span class="badge badge-warning">Bekleyen</span>
+                                            }
+                                            else if ((int)item.IsApproved == 1)
+                                            {
+                                                <span class="badge badge-success">Onaylı</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-danger">Reddedildi</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/chart.js/Chart.min.js"></script>
+    <script>
+        var doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Bekleyen', 'Onaylı', 'Reddedildi'],
+                datasets: [{
+                    data: [@ViewBag.PendingAppointments, @ViewBag.ApprovedAppointments, @ViewBag.RejectedAppointments],
+                    backgroundColor: ['#f6e05e', '#68d391', '#fc8181']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+               var barCtx = document.getElementById('barChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: [@Html.Raw(ViewBag.MonthlyLabels)],
+                datasets: [{
+                    label: 'Aylık Randevu',
+                    data: [@Html.Raw(ViewBag.MonthlyData)],
+                    backgroundColor: '#4e73df'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+}

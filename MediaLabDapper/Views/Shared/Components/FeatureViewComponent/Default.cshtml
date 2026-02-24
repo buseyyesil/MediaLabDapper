@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MediaLabDapper.DTOs.FeatureDtos.ResultFeatureDto>
+
+<section id="hero" class="hero section light-background">
+    <img src="~/MediLab-1.0.0/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+    <div class="container position-relative">
+
+        <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
+            <h2>⚕️MEDILAB HASTANESİ'NE HOŞ GELDİNİZ ⚕️</h2>
+            <p>Uzman kadromuz ve modern teknolojimiz ile sağlığınız için buradayız.</p>
+        </div>
+
+        <div class="content row gy-4">
+
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
+                    <h3>Neden MediLab?</h3>
+                    <p>
+                        Hasta memnuniyetini ön planda tutan hizmet anlayışımız,
+                        deneyimli doktor kadromuz ve gelişmiş tıbbi altyapımız ile
+                        güvenilir sağlık hizmeti sunuyoruz. Amacımız,
+                        kaliteli ve ulaşılabilir sağlık hizmetini herkes için mümkün kılmaktır.
+                    </p>
+                    <div class="text-center">
+                        <a href="#about" class="more-btn">
+                            <span>Daha Fazla Bilgi</span>
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="row gy-4">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box" data-aos="zoom-out" data-aos-delay="200">
+                                    <i class="@item.Icon"></i>
+                                    <h4>@item.Title</h4>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

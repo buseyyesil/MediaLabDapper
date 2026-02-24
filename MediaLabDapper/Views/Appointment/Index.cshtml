@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MediaLabDapper.DTOs.AppointmentDtos.ResultAppointmentDto>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Randevu Listesi</h3>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Ad Soyad</th>
+                                <th>Telefon</th>
+                                <th>Tarih</th>
+                                <th>Saat</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AppointmentId</td>
+                                    <td>@item.FullName</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.Time</td>
+                                    <td>
+                                        @{
+                                            var (badgeClass, badgeText) = item.IsApproved switch
+                                            {
+                                                AppointmentStatusDto.Beklemede => ("badge-warning", "Bekleyen"),
+                                                AppointmentStatusDto.Onaylı => ("badge-success", "Onaylı"),
+                                                AppointmentStatusDto.Reddedildi => ("badge-danger", "Reddedildi"),
+                                                _ => ("badge-secondary", "Bilinmiyor")
+                                            };
+                                        }
+                                        <span class="badge @badgeClass">@badgeText</span>
+                                    </td>
+                                    <td>
+                                        @if (item.IsApproved != AppointmentStatusDto.Onaylı)
+                                        {
+                                            <a asp-action="ApproveAppointment" asp-route-id="@item.AppointmentId" class="btn btn-success btn-sm">Onayla</a>
+                                        }
+                                        @if (item.IsApproved != AppointmentStatusDto.Reddedildi)
+                                        {
+                                            <a asp-action="RejectAppointment" asp-route-id="@item.AppointmentId" class="btn btn-danger btn-sm">Reddet</a>
+                                        }
+                                        <a asp-action="DeleteAppointment" asp-route-id="@item.AppointmentId" class="btn btn-secondary btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

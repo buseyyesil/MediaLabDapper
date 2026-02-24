@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MediaLabDapper.DTOs.DoctorDtos.ResultDoctorWithDepartmentDto>
+
+<section id="doctors" class="doctors section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>👩‍⚕️ Doktorlarımız</h2>
+        <p>Sağlığınız için alanında uzman ve deneyimli doktor kadromuz ile hizmet vermekteyiz.</p>
+    </div>
+    <div class="container">
+        <div class="row gy-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="team-member d-flex align-items-start">
+                        <div class="pic">
+                            <img src="@item.ImageUrl" class="img-fluid" alt="">
+                        </div>
+                        <div class="member-info">
+                            <h4>@item.NameSurname</h4>
+                            <span>@item.DepartmentName</span>
+                            <p>@item.Description</p>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter-x"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

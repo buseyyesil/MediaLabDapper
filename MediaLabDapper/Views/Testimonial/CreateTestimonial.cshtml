@@ -1,0 +1,43 @@
+﻿@model MediaLabDapper.DTOs.TestimonialDto.CreateTestimonialDto
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Yeni Yorum Ekle</h3>
+</div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="CreateTestimonial" method="post">
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Başlık</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Yorum</label>
+                        <textarea asp-for="Comment" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Comment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Puan</label>
+                        <input asp-for="Review" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Resim URL</label>
+                        <input asp-for="ImageUrl" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-light">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

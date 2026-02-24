@@ -1,0 +1,83 @@
+﻿@model MediaLabDapper.DTOs.AppointmentDtos.UpdateAppointmentDto
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Randevu Güncelle</h3>
+</div>
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="UpdateAppointment" method="post">
+                    <input type="hidden" asp-for="AppointmentId" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ad Soyad</label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tarih</label>
+                                <input asp-for="Date" type="date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Saat</label>
+                                <input asp-for="Time" type="time" class="form-control" />
+                                <span asp-validation-for="Time" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Bölüm</label>
+                                <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Doktor</label>
+                                <select asp-for="DoctorId" asp-items="ViewBag.Doctors" class="form-control">
+                                    <option value="">Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Durum</label>
+                        <select asp-for="IsApproved" class="form-control">
+                            <option value="0">Beklemede</option>
+                            <option value="1">Onaylı</option>
+                            <option value="2">Reddedildi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesaj</label>
+                        <textarea asp-for="Message" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+                    <a asp-action="Index" class="btn btn-light">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

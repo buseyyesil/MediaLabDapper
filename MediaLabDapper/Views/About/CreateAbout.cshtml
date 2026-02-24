@@ -1,0 +1,73 @@
+﻿@model MediaLabDapper.DTOs.AboutDtos.CreateAboutDto
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Yeni About Ekle</h3>
+</div>
+<div class="row">
+    <div class="col-md-8 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="CreateAbout" method="post">
+                    <div class="form-group">
+                        <label>Açıklama</label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Başlık 1</label>
+                                <input asp-for="Title1" class="form-control" />
+                                <span asp-validation-for="Title1" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Açıklama 1</label>
+                                <input asp-for="Explanation1" class="form-control" />
+                                <span asp-validation-for="Explanation1" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Başlık 2</label>
+                                <input asp-for="Title2" class="form-control" />
+                                <span asp-validation-for="Title2" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Açıklama 2</label>
+                                <input asp-for="Explanation2" class="form-control" />
+                                <span asp-validation-for="Explanation2" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Başlık 3</label>
+                                <input asp-for="Title3" class="form-control" />
+                                <span asp-validation-for="Title3" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Açıklama 3</label>
+                                <input asp-for="Explanation3" class="form-control" />
+                                <span asp-validation-for="Explanation3" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-light">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
