@@ -45,40 +45,59 @@ Renkli badge'ler ile görsel durum takibi
 Randevu onayında hastaya otomatik e-posta bildirimi
 
 
-screenshots/login.png
+### 🔐 Giriş Sayfası
+![Login](screenshots/login.png)
 
-screenshots/feature.png
+### 🌐 Frontend - Feature
+![Feature](screenshots/feature.png)
 
-screenshots/about.png
+### 🌐 Frontend - About
+![About](screenshots/about.png)
 
-screenshots/bölümler.png
+### 🏥 Frontend - Bölümler
+![Bölümler](screenshots/bölümler.png)
 
-screenshots/hizmetler.png
+### 💊 Frontend - Hizmetler
+![Hizmetler](screenshots/hizmetler.png)
 
-screenshots/doctors.png
+### 👨‍⚕️ Frontend - Doktorlar
+![Doctors](screenshots/doctors.png)
 
-screenshots/testimonials.png
+### 💬 Frontend - Testimonials
+![Testimonials](screenshots/testimonials.png)
 
-screenshots/randevu.png
+### 📅 Frontend - Randevu
+![Randevu](screenshots/randevu.png)
 
-screenshots/contatc.png
+### 📞 Frontend - İletişim
+![İletişim](screenshots/contatc.png)
 
-screenshots/footer.png
+### 🦶 Frontend - Footer
+![Footer](screenshots/footer.png)
 
-screenshots/dashboard.png
+### 📊 Admin - Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-screenshots/admin.png
+### ⚙️ Admin Paneli
+![Admin](screenshots/admin.png)
 
-screenshots/admin1.png
+### ⚙️ Admin Paneli 2
+![Admin1](screenshots/admin1.png)
 
-screenshots/admin2.png
+### ⚙️ Admin Paneli 3
+![Admin2](screenshots/admin2.png)
 
-screenshots/admin3.png
+### ⚙️ Admin Paneli 4
+![Admin3](screenshots/admin3.png)
 
-screenshots/hasta.png
+### 👤 Hasta Paneli
+![Hasta](screenshots/hasta.png)
 
-screenshots/hasta2.png
+### 👤 Hasta Paneli - Randevularım
+![Hasta2](screenshots/hasta2.png)
 
-screenshots/hasta3.png
+### 👤 Hasta Paneli - Profil
+![Hasta3](screenshots/hasta3.png)
 
-screenshots/mail.png
+### 📧 Onay Maili
+![Mail](screenshots/mail.png)
