@@ -54,8 +54,7 @@ Randevu onayında hastaya otomatik e-posta bildirimi
 ### 🌐 Frontend - About
 ![About](screenshots/about.png)
 
-### 🏥 Frontend - Bölümler
-![Bölümler](screenshots/bölümler.png)
+-
 
 ### 💊 Frontend - Hizmetler
 ![Hizmetler](screenshots/hizmetler.png)
