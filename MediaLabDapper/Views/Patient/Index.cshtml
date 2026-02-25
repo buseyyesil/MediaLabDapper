@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Hoş Geldiniz, @ViewBag.FullName 👋</h3>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card bg-primary">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Ad Soyad</p>
+                        <h5 class="text-white mt-2">@ViewBag.FullName</h5>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-account bg-inverse-icon-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card bg-success">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Email</p>
+                        <h5 class="text-white mt-2">@ViewBag.Email</h5>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-email bg-inverse-icon-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 grid-margin stretch-card">
+        <div class="card bg-warning">
+            <div class="card-body px-3 py-4">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="color-card">
+                        <p class="mb-0 color-card-head text-white">Telefon</p>
+                        <h5 class="text-white mt-2">@ViewBag.Phone</h5>
+                    </div>
+                    <i class="card-icon-indicator mdi mdi-phone bg-inverse-icon-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="mdi mdi-calendar-plus mdi-48px text-primary mb-3"></i>
+                <h5>Yeni Randevu Al</h5>
+                <p class="text-muted">Bölüm ve doktor seçerek randevu oluşturun.</p>
+                <a asp-controller="Patient" asp-action="NewAppointment" class="btn btn-primary">Randevu Al</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <i class="mdi mdi-calendar-check mdi-48px text-success mb-3"></i>
+                <h5>Randevularım</h5>
+                <p class="text-muted">Mevcut ve geçmiş randevularınızı görüntüleyin.</p>
+                <a asp-controller="Patient" asp-action="MyAppointments" class="btn btn-success">Randevularım</a>
+            </div>
+        </div>
+    </div>
+</div>

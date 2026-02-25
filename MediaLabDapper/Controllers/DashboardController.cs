@@ -1,10 +1,12 @@
 ﻿using MediaLabDapper.Repositories.AppointmentRepositories;
 using MediaLabDapper.Repositories.DepartmentRepositories;
 using MediaLabDapper.Repositories.DoctorRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DashboardController(
         IAppointmentRepository _appointmentRepository,
         IDepartmentRepository _departmentRepository,

@@ -34,8 +34,9 @@ namespace MediaLabDapper.ViewComponents
 
             ViewBag.Doctors = doctors.Select(x => new SelectListItem
             {
-                Text = x.NameSurname,
-                Value = x.DoctorId.ToString()
+                Text = x.IsAvailable ? x.NameSurname : $"{x.NameSurname} (Müsait Değil)",
+                Value = x.DoctorId.ToString(),
+                Disabled = !x.IsAvailable
             }).ToList();
 
             return View(new CreateAppointmentDto());

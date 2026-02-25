@@ -23,5 +23,6 @@ namespace MediaLabDapper.DTOs.AppointmentDtos
         [MaxLength(400, ErrorMessage = "Mesaj en fazla 400 karakter olabilir.")]
         public string? Message { get; set; }
         public AppointmentStatusDto IsApproved { get; set; }
+        
     }
 }

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Yeni Randevu Al</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Patient" asp-action="CreateAppointment" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Bölüm</label>
+                                <select name="DepartmentId" class="form-control" asp-items="ViewBag.Departments">
+                                    <option value="">Bölüm Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Doktor</label>
+                                <select name="DoctorId" class="form-control" asp-items="ViewBag.Doctors">
+                                    <option value="">Doktor Seçiniz</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tarih</label>
+                                <input type="date" name="Date" class="form-control" min="2026-01-01" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Saat</label>
+                                <input type="time" name="Time" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Mesaj</label>
+                                <textarea name="Message" class="form-control" rows="3" placeholder="Varsa eklemek istediğiniz notlar..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Randevu Oluştur</button>
+                    <a asp-action="Index" class="btn btn-secondary ml-2">İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

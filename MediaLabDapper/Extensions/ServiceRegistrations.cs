@@ -7,6 +7,7 @@ using MediaLabDapper.Repositories.DoctorRepositories;
 using MediaLabDapper.Repositories.FeatureRepositories;
 using MediaLabDapper.Repositories.ServiceRepositories;
 using MediaLabDapper.Repositories.TestimonialRepositories;
+using MediaLabDapper.Services;
 
 namespace MediaLabDapper.Extensions
 {
@@ -23,6 +24,7 @@ namespace MediaLabDapper.Extensions
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IEmailService, EmailService>();
             return services;
         }
     }

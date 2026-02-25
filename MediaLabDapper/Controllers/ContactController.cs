@@ -1,9 +1,11 @@
 ﻿using MediaLabDapper.DTOs.ContactDto;
 using MediaLabDapper.Repositories.ContactRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ContactController(IContactRepository _contactRepository) : Controller
     {
         public async Task<IActionResult> Index()

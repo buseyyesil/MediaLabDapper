@@ -1,9 +1,11 @@
 ﻿using MediaLabDapper.DTOs.ServiceDto;
 using MediaLabDapper.Repositories.ServiceRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ServiceController(IServiceRepository _serviceRepository) : Controller
     {
         public async Task<IActionResult> Index()

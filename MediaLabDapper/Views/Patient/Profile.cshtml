@@ -1,0 +1,55 @@
+﻿@model MediaLabDapper.Models.ProfileViewModel
+@{
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<div class="page-header">
+    <h3 class="page-title">Profilim</h3>
+</div>
+
+@if (TempData["ProfileSuccess"] != null)
+{
+    <div class="alert alert-success">@TempData["ProfileSuccess"]</div>
+}
+
+<div class="row">
+    <div class="col-md-8 mx-auto grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Bilgilerimi Güncelle</h4>
+                <form asp-action="Profile" asp-controller="Patient" method="post">
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Telefon</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <hr class="mt-4 mb-4" />
+                    <h5 class="mb-3">Şifre Değiştir <small class="text-muted" style="font-size:13px;">(Değiştirmek istemiyorsanız boş bırakın)</small></h5>
+
+                    <div class="form-group">
+                        <label>Mevcut Şifre</label>
+                        <input asp-for="CurrentPassword" type="password" class="form-control" placeholder="Mevcut şifreniz" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Yeni Şifre</label>
+                        <input asp-for="NewPassword" type="password" class="form-control" placeholder="Yeni şifreniz" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label>Yeni Şifre Tekrar</label>
+                        <input asp-for="ConfirmNewPassword" type="password" class="form-control" placeholder="Yeni şifrenizi tekrar giriniz" />
+                        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

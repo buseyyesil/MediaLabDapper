@@ -1,0 +1,178 @@
+﻿@model MediaLabDapper.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>MediLab - Kayıt Ol</title>
+    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/css/style.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 48px 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .login-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+            .login-icon i {
+                font-size: 32px;
+                color: #fff;
+            }
+
+        .login-card h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+
+        .login-card p.subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #444;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 1.5px solid #e0e0e0;
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+            .form-control:focus {
+                border-color: #1a73e8;
+                box-shadow: 0 0 0 3px rgba(26,115,232,0.1);
+            }
+
+        .text-danger {
+            font-size: 12px;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+
+            .btn-login:hover {
+                opacity: 0.9;
+                color: #fff;
+            }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .back-link a {
+                color: #888;
+                font-size: 13px;
+                text-decoration: none;
+            }
+
+                .back-link a:hover {
+                    color: #1a73e8;
+                }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="login-icon">
+            <i class="mdi mdi-account-plus"></i>
+        </div>
+        <h2>MediLab</h2>
+        <p class="subtitle">Yeni Hasta Kaydı</p>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger py-2 mb-3">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <p class="mb-0 small">@error.ErrorMessage</p>
+                }
+            </div>
+        }
+
+        <form method="post" asp-action="Register" asp-controller="Auth">
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input asp-for="FullName" class="form-control" placeholder="Adınız ve soyadınız" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Email</label>
+                <input asp-for="Email" class="form-control" placeholder="Email adresiniz" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Telefon</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Telefon numaranız" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Şifreniz" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label>Şifre Tekrar</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Şifrenizi tekrar giriniz" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-login mt-2">
+                <i class="mdi mdi-account-check mr-2"></i> Kayıt Ol
+            </button>
+        </form>
+
+        <div class="back-link">
+            <a asp-action="Login" asp-controller="Auth">
+                <i class="mdi mdi-arrow-left"></i> Zaten hesabım var, giriş yap
+            </a>
+        </div>
+    </div>
+
+    <script src="~/Breeze-Free-Bootstrap-Admin-Template-1.0.0/template/assets/vendors/js/vendor.bundle.base.js"></script>
+</body>
+</html>

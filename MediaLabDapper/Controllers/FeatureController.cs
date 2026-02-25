@@ -1,10 +1,12 @@
 ﻿using MediaLabDapper.DTOs.FeatureDto;
 using MediaLabDapper.DTOs.FeatureDtos;
 using MediaLabDapper.Repositories.FeatureRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class FeatureController(IFeatureRepository _featureRepository) : Controller
     {
         public async Task<IActionResult> Index()

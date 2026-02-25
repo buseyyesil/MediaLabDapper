@@ -1,10 +1,12 @@
 ﻿using MediaLabDapper.DTOs.DepartmentDtos;
 using MediaLabDapper.Repositories.DepartmentRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace MediLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _departmentRepository;

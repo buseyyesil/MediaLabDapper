@@ -1,9 +1,11 @@
 ﻿using MediaLabDapper.DTOs.TestimonialDto;
 using MediaLabDapper.Repositories.TestimonialRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TestimonialController(ITestimonialRepository _testimonialRepository) : Controller
     {
         public async Task<IActionResult> Index()

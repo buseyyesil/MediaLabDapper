@@ -1,9 +1,11 @@
 ﻿using MediaLabDapper.DTOs.AboutDtos;
 using MediaLabDapper.Repositories.AboutRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AboutController(IAboutRepository _aboutRepository) : Controller
     {
         public async Task<IActionResult> Index()

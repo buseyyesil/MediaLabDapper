@@ -1,11 +1,13 @@
 ﻿using MediaLabDapper.DTOs.DoctorDtos;
 using MediaLabDapper.Repositories.DepartmentRepositories;
 using MediaLabDapper.Repositories.DoctorRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace MediaLabDapper.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DoctorController(IDoctorRepositories _doctorRepositories,IDepartmentRepository _departmentRepository) : Controller
     {
         public async Task<IActionResult> Index()
@@ -61,6 +63,21 @@ namespace MediaLabDapper.Controllers
             await _doctorRepositories.UpdateDoctorAsync(updateDoctorDto);
             return RedirectToAction("Index");
 
+        }
+        public async Task<IActionResult> ToggleAvailability(int id)
+        {
+            var doctor = await _doctorRepositories.GetDoctorByIdAsync(id);
+            var updateDto = new UpdateDoctorDto
+            {
+                DoctorId = doctor.DoctorId,
+                NameSurname = doctor.NameSurname,
+                ImageUrl = doctor.ImageUrl,
+                Description = doctor.Description,
+                DepartmentId = doctor.DepartmentId,
+                IsAvailable = !doctor.IsAvailable
+            };
+            await _doctorRepositories.UpdateDoctorAsync(updateDto);
+            return RedirectToAction("Index");
         }
     }
 }
