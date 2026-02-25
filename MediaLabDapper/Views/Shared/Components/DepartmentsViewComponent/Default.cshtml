@@ -1,18 +1,13 @@
 ﻿@model IEnumerable<MediaLabDapper.DTOs.DepartmentDtos.ResultDepartmentDto>
-
 <section id="departments" class="departments section">
-
     <div class="container section-title" data-aos="fade-up">
         <h2>Bölümlerimiz</h2>
         <p>Uzman kadromuz ile farklı branşlarda kaliteli sağlık hizmeti sunuyoruz.</p>
     </div>
-
     <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row">
-
             <div class="col-lg-3">
                 <ul class="nav nav-tabs flex-column">
-
                     @foreach (var item in Model.Select((dept, index) => new { dept, index }))
                     {
                         <li class="nav-item">
@@ -23,32 +18,30 @@
                             </a>
                         </li>
                     }
-
                 </ul>
             </div>
-
             <div class="col-lg-9 mt-4 mt-lg-0">
                 <div class="tab-content">
-
                     @foreach (var item in Model.Select((dept, index) => new { dept, index }))
                     {
                         <div class="tab-pane @(item.index == 0 ? "active show" : "")"
                              id="departments-tab-@(item.index + 1)">
-
                             <div class="row">
                                 <div class="col-lg-8 details order-2 order-lg-1">
                                     <h3>@item.dept.DepartmentName</h3>
                                     <p>@item.dept.Description</p>
                                 </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    @if (!string.IsNullOrEmpty(item.dept.ImageUrl))
+                                    {
+                                        <img src="@item.dept.ImageUrl" alt="@item.dept.DepartmentName" class="img-fluid" />
+                                    }
+                                </div>
                             </div>
-
                         </div>
                     }
-
                 </div>
             </div>
-
         </div>
     </div>
-
 </section>

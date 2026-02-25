@@ -1,71 +1,84 @@
-﻿🏥 MediLab Hastane Yönetim Sistemi 🏥
-
-🎯 Proje Hakkında
-MediLab Hastane Yönetim Sistemi, ASP.NET Core 9 MVC mimarisiyle geliştirilmiş, modern ve ölçeklenebilir bir hastane yönetim platformudur. Proje; Dapper ORM, Repository Pattern ve ViewComponent mimarisi kullanılarak inşa edilmiştir.
-Sistem iki ana bölümden oluşmaktadır:
+﻿🏥 Proje Hakkında
+MediLab Hastane Yönetim Sistemi, ASP.NET Core 9 MVC mimarisiyle inşa edilmiş, Dapper ORM ve Repository Pattern kullanılarak geliştirilmiş modern ve ölçeklenebilir bir hastane yönetim platformudur.
+Sistem üç ana bölümden oluşmaktadır:
 
 🌐 Frontend: Hastalar için modern ve kullanıcı dostu arayüz
 ⚙️ Admin Paneli: Yöneticiler için kapsamlı içerik yönetim sistemi
+👤 Hasta Paneli: Hastalar için kişisel randevu takip sistemi
 
-✨ Özellikler ✨
-
+✨ Özellikler
 🌐 Frontend
 
-💠Modern ve responsive tasarım (MediLab Bootstrap Teması)
-💠Dinamik Feature, About, Services, Departments, Doctors bölümleri
-💠Swiper.js ile hasta yorumları (Testimonials) slider
-💠Online randevu formu (Bölüm & Doktor seçimi)
-💠SweetAlert2 ile kullanıcı bildirimleri
-💠AOS (Animate On Scroll) ile sayfa animasyonları
-💠İstatistik sayacı (PureCounter.js)
-💠İletişim bilgileri ve harita
+Modern ve responsive tasarım (MediLab Bootstrap Teması)
+Dinamik Feature, About, Services, Departments, Doctors bölümleri
+Swiper.js ile hasta yorumları (Testimonials) slider
+Online randevu formu (Bölüm & Doktor seçimi)
+SweetAlert2 ile kullanıcı bildirimleri
+AOS (Animate On Scroll) ile sayfa animasyonları
+İstatistik sayacı (PureCounter.js)
+İletişim bilgileri ve harita
 
 ⚙️ Admin Paneli
 
-💠Breeze Bootstrap Admin Template entegrasyonu
-💠Dashboard: Chart.js ile randevu durum dağılımı ve aylık istatistik grafikleri
-💠Feature Yönetimi: Öne çıkan alan CRUD işlemleri
-💠About Yönetimi: Hakkımızda içeriği yönetimi
-💠Service Yönetimi: Hizmetler CRUD işlemleri
-💠Department Yönetimi: Bölüm yönetimi
-💠Doctor Yönetimi: Doktor yönetimi (bölüm ilişkili)
-💠Appointment Yönetimi: Randevu onaylama / reddetme / silme
-💠Testimonial Yönetimi: Hasta yorumları yönetimi
-💠Contact Yönetimi: İletişim bilgileri yönetimi
+Breeze Bootstrap Admin Template entegrasyonu
+Dashboard: Chart.js ile randevu durum dağılımı ve aylık istatistik grafikleri
+Feature, About, Service, Department, Doctor, Appointment, Testimonial ve Contact modülleri için eksiksiz CRUD işlemleri
+Randevu onaylama / reddetme sistemi
+Doktor müsaitlik yönetimi (MHRS benzeri - tek tıkla durum değiştirme)
+Randevu onayında MailKit ile otomatik HTML e-posta bildirimi
+
+👤 Hasta Paneli
+
+ASP.NET Core Identity ile güvenli kayıt & giriş sistemi
+Rol bazlı yetkilendirme (Admin / Hasta)
+Kişisel randevu takibi ve durum görüntüleme
+Yeni randevu oluşturma
+Profil bilgileri & şifre güncelleme
+Müsait olmayan doktorlar randevu formunda otomatik disabled
 
 📅 Randevu Sistemi
 
-💠Frontend'den online randevu oluşturma
-💠Admin panelinde randevu listeleme ve durum yönetimi
-💠Tek tıkla Onaylı / Beklemede / Reddedildi durum değişimi
-💠Renkli badge'ler ile görsel durum takibi
-
-📊 Dashboard
-Admin paneli dashboard'unda aşağıdaki veriler görselleştirilmektedir:
-
-📅 Toplam Randevu sayısı
-👨‍⚕️ Toplam Doktor sayısı
-🏥 Toplam Bölüm sayısı
-⏳ Bekleyen Randevu sayısı
-🍩 Doughnut Chart: Randevu durum dağılımı (Bekleyen / Onaylı / Reddedildi)
-📊 Bar Chart: Aylık randevu istatistikleri
-📋 Son Randevular tablosu
+Frontend'den online randevu oluşturma
+Admin panelinde randevu listeleme ve durum yönetimi
+Tek tıkla Onaylı / Beklemede / Reddedildi durum değişimi
+Renkli badge'ler ile görsel durum takibi
+Randevu onayında hastaya otomatik e-posta bildirimi
 
 
-### 🌐 Frontend - Feature
-![Feature](screenshots/feature.png)
+screenshots/login.png
 
-### 🌐 Frontend - About
-![About](screenshots/about.png)
+screenshots/feature.png
 
-### 👨‍⚕️ Doktorlar
-![Doctors](screenshots/doctors.png)
+screenshots/about.png
 
-### 📅 Randevu
-![Randevu](screenshots/randevu.png)
+screenshots/bölümler.png
 
-### 💬 Testimonials
-![Testimonials](screenshots/testimonials.png)
+screenshots/hizmetler.png
 
-### 📊 Dashboard
-![Dashboard](screenshots/dashboard.png)
+screenshots/doctors.png
+
+screenshots/testimonials.png
+
+screenshots/randevu.png
+
+screenshots/contatc.png
+
+screenshots/footer.png
+
+screenshots/dashboard.png
+
+screenshots/admin.png
+
+screenshots/admin1.png
+
+screenshots/admin2.png
+
+screenshots/admin3.png
+
+screenshots/hasta.png
+
+screenshots/hasta2.png
+
+screenshots/hasta3.png
+
+screenshots/mail.png

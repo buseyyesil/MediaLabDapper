@@ -15,10 +15,11 @@ namespace MediaLabDapper.Repositories.DepartmentRepositories
 
         public async Task CreateDepartmentAsync(CreateDepartmentDto createDepartmentDto)
         {
-           string query = "INSERT INTO departments (departmentName,description) VALUES (@DepartmentName,@Description)";
+            string query = "INSERT INTO Departments (DepartmentName, Description, ImageUrl) VALUES (@DepartmentName, @Description, @ImageUrl)";
             var parameters = new DynamicParameters();
             parameters.Add("DepartmentName", createDepartmentDto.DepartmentName);
             parameters.Add("Description", createDepartmentDto.Description);
+            parameters.Add("ImageUrl", createDepartmentDto.ImageUrl);
             var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, parameters);
         }
@@ -34,16 +35,14 @@ namespace MediaLabDapper.Repositories.DepartmentRepositories
 
         public async Task<IEnumerable<ResultDepartmentDto>> GetAllDepartmentsAsync()
         {
-            string query = "SELECT * FROM Departments";
+            string query = "SELECT DepartmentId, DepartmentName, Description, ImageUrl FROM Departments";
             var connection = _context.CreateConnection();
-    
-    
             return await connection.QueryAsync<ResultDepartmentDto>(query);
         }
 
         public async Task<GetDepartmentByIdDto> GetDepartmentByIdAsync(int id)
         {
-            string query = "SELECT * FROM Departments WHERE DepartmentId = @DepartmentId";
+            string query = "SELECT DepartmentId, DepartmentName, Description, ImageUrl FROM Departments WHERE DepartmentId = @DepartmentId";
             var parameters = new DynamicParameters();
             parameters.Add("DepartmentId", id);
             var connection = _context.CreateConnection();
@@ -52,9 +51,8 @@ namespace MediaLabDapper.Repositories.DepartmentRepositories
 
         public async Task UpdateDepartmentAsync(UpdateDepartmentDto updateDepartmentDto)
         {
-            string query = "UPDATE Departments SET DepartmentName = @DepartmentName, Description = @Description WHERE DepartmentId = @DepartmentId";
-            var parameters = new DynamicParameters(updateDepartmentDto); 
-          
+            string query = "UPDATE Departments SET DepartmentName = @DepartmentName, Description = @Description, ImageUrl = @ImageUrl WHERE DepartmentId = @DepartmentId";
+            var parameters = new DynamicParameters(updateDepartmentDto);
             var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, parameters);
         }

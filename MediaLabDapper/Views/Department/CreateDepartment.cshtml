@@ -2,7 +2,6 @@
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="page-header">
     <h3 class="page-title">Yeni Bölüm Ekle</h3>
 </div>
@@ -20,6 +19,11 @@
                         <label>Açıklama</label>
                         <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                         <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Resim URL</label>
+                        <input asp-for="ImageUrl" class="form-control" placeholder="Resim URL giriniz" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
                     <a asp-action="Index" class="btn btn-light">İptal</a>
